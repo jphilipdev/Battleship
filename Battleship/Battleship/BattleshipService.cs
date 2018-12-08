@@ -6,7 +6,14 @@ using System.Collections.Generic;
 
 namespace Battleship
 {
-    public class BattleshipService
+    public interface IBattleshipService
+    {
+        void AddBattleship(Guid playerId, IReadOnlyList<Coordinate> coordinates);
+        void Attack(Guid playerId, Coordinate coordinate);
+        bool IsGameLost(Guid playerId);
+    }
+
+    public class BattleshipService : IBattleshipService
     {
         private readonly IGameStore _store = new GameStore();
         private readonly IAddBattleshipCommandHandler _addBattleshipCommandHandler;

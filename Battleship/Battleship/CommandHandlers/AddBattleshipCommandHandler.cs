@@ -34,7 +34,7 @@ namespace Battleship.CommandHandlers
 
         private void ValidateCoordinatesProvided(Guid playerId, IReadOnlyList<Coordinate> coordinates)
         {
-            if (!coordinates.Any())
+            if (coordinates == null || !coordinates.Any())
             {
                 throw new CoordinatesNotProvidedException(playerId);
             }
